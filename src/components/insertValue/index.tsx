@@ -51,7 +51,7 @@ function InsertValue({ selected }: Props) {
                     </>
                 )
 
-                break;
+
             case "Square":
                 return (
                     <>
@@ -62,7 +62,7 @@ function InsertValue({ selected }: Props) {
                     </>
                 )
 
-                break;
+
 
             default:
                 return (
@@ -76,7 +76,7 @@ function InsertValue({ selected }: Props) {
                             <input type='number' value={yAxis} onChange={(event) => { setYAxis(parseInt(event.target.value)) }}></input>
                         </div>
                     </>)
-                break;
+
         }
     }
     const calculateArea = () => {
