@@ -1,0 +1,41 @@
+.bold-font{
+    font-weight: 600;
+}
+.heading-font{
+ font-size: 28px;
+}
+.text-center{
+    text-align: center;
+}
+.medium-font{
+    font-size: 16px;
+}
+
+.flex{
+    display: flex;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+
+.clickable{
+    cursor: pointer;
+}
+.container{
+    border: 1px solid;
+    padding:16px;
+    border-radius: 10px;
+    min-height: 400px;
+    height:400px;
+    width: 400px;
+    position: relative;
+    margin: 16px auto;
+}
+.description{
+    margin:16px 0 32px;
+}
+.button-wrapper{
+    position: absolute;
+    bottom: 16px;
+}
