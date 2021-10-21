@@ -4,7 +4,8 @@ import Heading from '../heading'
 import './style.css'
 import SelectShape from '../selectShape'
 import Result from '../result';
-import Button from '../button'
+import Button from '../button';
+import InputField from '../inputField'
 
 interface Props {
     selected: string
@@ -26,55 +27,27 @@ function InsertValue({ selected }: Props) {
 
 
     const renderBody = () => {
-
         switch (selected) {
             case "Rectangle":
                 return (
                     <>
-                        <div className='flex mTopBottom-16'>
-                            <div className='bold-font width-100'>Length:</div>
-                            <input type='number' value={length} onChange={(event) => { setLength(parseInt(event.target.value)) }}></input>
-                        </div>
-                        <div className='flex mTopBottom-16'>
-                            <div className='bold-font width-100'>Width:</div>
-                            <input type='number' value={width} onChange={(event) => { setWidth(parseInt(event.target.value)) }}></input>
-                        </div>
+                        <InputField field='Length' value={length} onInputChange={setLength} />
+                        <InputField field='Width' value={width} onInputChange={setWidth} />
                     </>
                 )
             case "Circle":
                 return (
-                    <>
-                        <div className='flex mTopBottom-16'>
-                            <div className='bold-font width-100'>Diameter:</div>
-                            <input type='number' value={diameter} onChange={(event) => { setDiameter(parseInt(event.target.value)) }}></input>
-                        </div>
-                    </>
+                    <InputField field='Diameter' value={diameter} onInputChange={setDiameter} />
                 )
-
-
             case "Square":
                 return (
-                    <>
-                        <div className='flex mTopBottom-16'>
-                            <div className='bold-font width-100'>Side:</div>
-                            <input type='number' value={side} onChange={(event) => { setSide(parseInt(event.target.value)) }}></input>
-                        </div>
-                    </>
+                    <InputField field='Side' value={side} onInputChange={setSide} />
                 )
-
-
-
             default:
                 return (
                     <>
-                        <div className='flex mTopBottom-16'>
-                            <div className='bold-font width-100'>Major Axis:</div>
-                            <input type='number' value={xAxis} onChange={(event) => { setXAxis(parseInt(event.target.value)) }}></input>
-                        </div>
-                        <div className='flex mTopBottom-16'>
-                            <div className='bold-font width-100'>Minor Axis:</div>
-                            <input type='number' value={yAxis} onChange={(event) => { setYAxis(parseInt(event.target.value)) }}></input>
-                        </div>
+                        <InputField field='Major Axis' value={xAxis} onInputChange={setXAxis} />
+                        <InputField field='Minor Axis' value={yAxis} onInputChange={setYAxis} />
                     </>
                 )
 
