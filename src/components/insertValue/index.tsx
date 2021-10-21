@@ -75,7 +75,8 @@ function InsertValue({ selected }: Props) {
                             <div className='bold-font width-100'>Minor Axis:</div>
                             <input type='number' value={yAxis} onChange={(event) => { setYAxis(parseInt(event.target.value)) }}></input>
                         </div>
-                    </>)
+                    </>
+                )
 
         }
     }
@@ -115,7 +116,7 @@ function InsertValue({ selected }: Props) {
                     <div className='button-wrapper flex flex-center'>
                         <Button onPress={onPress} text='Go to step 3' />
                         <div
-                            onClick={() => [setSelectShape(true), setResult(false),]}
+                            onClick={() => [setSelectShape(true), setResult(false)]}
                             className='cancel clickable'>or Cancel
                         </div>
                     </div>
