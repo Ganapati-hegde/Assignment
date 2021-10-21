@@ -115,9 +115,10 @@ function InsertValue({ selected }: Props) {
 
                     <div className='button-wrapper flex flex-center'>
                         <Button onPress={onPress} text='Go to step 3' />
+                        <span className="mHorizontal-16">or</span>
                         <div
                             onClick={() => [setSelectShape(true), setResult(false)]}
-                            className='mHorizontal-16 clickable'>or Cancel
+                            className='clickable'> Cancel
                         </div>
                     </div>
                 </>
