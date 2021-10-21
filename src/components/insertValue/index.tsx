@@ -31,11 +31,11 @@ function InsertValue({ selected }: Props) {
             case "Rectangle":
                 return (
                     <>
-                        <div className='flex spacing'>
+                        <div className='flex mTopBottom-16'>
                             <div className='bold-font width-100'>Length:</div>
                             <input type='number' value={length} onChange={(event) => { setLength(parseInt(event.target.value)) }}></input>
                         </div>
-                        <div className='flex spacing'>
+                        <div className='flex mTopBottom-16'>
                             <div className='bold-font width-100'>Width:</div>
                             <input type='number' value={width} onChange={(event) => { setWidth(parseInt(event.target.value)) }}></input>
                         </div>
@@ -44,7 +44,7 @@ function InsertValue({ selected }: Props) {
             case "Circle":
                 return (
                     <>
-                        <div className='flex spacing'>
+                        <div className='flex mTopBottom-16'>
                             <div className='bold-font width-100'>Diameter:</div>
                             <input type='number' value={diameter} onChange={(event) => { setDiameter(parseInt(event.target.value)) }}></input>
                         </div>
@@ -55,7 +55,7 @@ function InsertValue({ selected }: Props) {
             case "Square":
                 return (
                     <>
-                        <div className='flex spacing'>
+                        <div className='flex mTopBottom-16'>
                             <div className='bold-font width-100'>Side:</div>
                             <input type='number' value={side} onChange={(event) => { setSide(parseInt(event.target.value)) }}></input>
                         </div>
@@ -67,11 +67,11 @@ function InsertValue({ selected }: Props) {
             default:
                 return (
                     <>
-                        <div className='flex spacing'>
+                        <div className='flex mTopBottom-16'>
                             <div className='bold-font width-100'>Major Axis:</div>
                             <input type='number' value={xAxis} onChange={(event) => { setXAxis(parseInt(event.target.value)) }}></input>
                         </div>
-                        <div className='flex spacing'>
+                        <div className='flex mTopBottom-16'>
                             <div className='bold-font width-100'>Minor Axis:</div>
                             <input type='number' value={yAxis} onChange={(event) => { setYAxis(parseInt(event.target.value)) }}></input>
                         </div>
@@ -109,7 +109,7 @@ function InsertValue({ selected }: Props) {
             {!result && !selectShape ?
                 <>
                     <Heading step={2} title='Insert your values'></Heading>
-                    <div className='description'>You have selected a <span className='bold-font'>{selected}</span>, please input the required variables</div>
+                    <div className='mTop-16 mBottom-32'>You have selected a <span className='bold-font'>{selected}</span>, please input the required variables</div>
 
                     {renderBody()}
 
@@ -117,7 +117,7 @@ function InsertValue({ selected }: Props) {
                         <Button onPress={onPress} text='Go to step 3' />
                         <div
                             onClick={() => [setSelectShape(true), setResult(false)]}
-                            className='cancel clickable'>or Cancel
+                            className='mHorizontal-16 clickable'>or Cancel
                         </div>
                     </div>
                 </>

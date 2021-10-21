@@ -4,7 +4,6 @@ import Heading from '../heading';
 import RadioButtons from '../radioButtons';
 import InsertValue from '../insertValue';
 import Button from '../button'
-import './style.css';
 import '../../commonStyles.css'
 
 
@@ -26,7 +25,7 @@ function SelectShape() {
         <>
           <Heading step={1} title="Select your shape"></Heading>
 
-          <div className='description'>Please select the shape that you would like to calculate the area of and press the button "Go to step 2"</div>
+          <div className='mBottom-32 mTop-16'>Please select the shape that you would like to calculate the area of and press the button "Go to step 2"</div>
 
           {shapes.map((eachElem) => {
             return <RadioButtons value={eachElem} selected={selected} onInputChange={onInputChange} />

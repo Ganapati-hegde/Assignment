@@ -12,7 +12,7 @@ interface Props {
 
 function RadionButtons({ value, selected, onInputChange }: Props) {
     return (
-        <div className='radio-inputs'>
+        <div className='mTopBottom-16'>
             <input type="radio" id={value} name={value} value={value} checked={selected === value} onChange={(event) => { onInputChange(event) }} />
             <label htmlFor={value}>{value}</label>
         </div>
