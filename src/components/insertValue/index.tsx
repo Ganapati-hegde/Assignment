@@ -26,55 +26,58 @@ function InsertValue({ selected }: Props) {
     const [yAxis, setYAxis] = useState(0)
 
 
-    const renderBody = () => {
-        switch (selected) {
-            case "Rectangle":
+    const renderInputFields = (selectedShape: string) => {
+        let inputFields: any = {
+            'Rectangle': function () {
                 return (
                     <>
                         <InputField field='Length' value={length} onInputChange={setLength} />
                         <InputField field='Width' value={width} onInputChange={setWidth} />
                     </>
                 )
-            case "Circle":
-                return (
-                    <InputField field='Diameter' value={diameter} onInputChange={setDiameter} />
-                )
-            case "Square":
-                return (
-                    <InputField field='Side' value={side} onInputChange={setSide} />
-                )
-            default:
-                return (
-                    <>
-                        <InputField field='Major Axis' value={xAxis} onInputChange={setXAxis} />
-                        <InputField field='Minor Axis' value={yAxis} onInputChange={setYAxis} />
-                    </>
-                )
-
-        }
+            },
+            'Circle': function () {
+                return <InputField field='Diameter' value={diameter} onInputChange={setDiameter} />
+            },
+            'Square': function () {
+                return <InputField field='Side' value={side} onInputChange={setSide} />
+            },
+            'Ellipse': function () {
+                return (<>
+                    <InputField field='Major Axis' value={xAxis} onInputChange={setXAxis} />
+                    <InputField field='Minor Axis' value={yAxis} onInputChange={setYAxis} />
+                </>)
+            }
+        };
+        return inputFields[selectedShape]();
     }
-    const calculateArea = () => {
-        let result: number = 0;
-        switch (selected) {
-            case 'Rectangle':
-                result = length * width;
-                break;
-            case 'Circle':
-                let radius: number = diameter / 2
-                result = Math.PI * radius * radius;
-                break;
-            case 'Square':
-                result = side * side;
-                break;
-            default:
-                result = Math.PI * xAxis * yAxis
-                break;
-        }
-        setArea(result)
-    }
-    const onPress = () => {
+    const onPressNext = () => {
         setResult(true);
-        calculateArea();
+        var areaOfTheShape: number = calculateArea();
+        setArea(areaOfTheShape);
+    }
+
+    const calculateArea = () => {
+        let shapes: any = {
+            'Rectangle': function () {
+                return length * width
+            },
+            'Circle': function () {
+                let radius: number = diameter / 2
+                return Math.PI * radius * radius;
+            },
+            'Square': function () {
+                return side * side;
+            },
+            'Ellipse': function () {
+                return Math.PI * xAxis * yAxis
+            }
+        };
+        return shapes[selected]();
+    }
+    const onPressCancel = () => {
+        setSelectShape(true);
+        setResult(false)
     }
 
     return (
@@ -84,15 +87,12 @@ function InsertValue({ selected }: Props) {
                     <Heading step={2} title='Insert your values'></Heading>
                     <div className='mTop-16 mBottom-32'>You have selected a <span className='bold-font'>{selected}</span>, please input the required variables</div>
 
-                    {renderBody()}
+                    {renderInputFields(selected)}
 
                     <div className='button-wrapper flex flex-center'>
-                        <Button onPress={onPress} text='Go to step 3' />
+                        <Button onPress={onPressNext} text='Go to step 3' />
                         <span className="mHorizontal-16">or</span>
-                        <div
-                            onClick={() => [setSelectShape(true), setResult(false)]}
-                            className='clickable'> Cancel
-                        </div>
+                        <Button onPress={onPressCancel} text='Cancel' />
                     </div>
                 </>
                 : result ?

@@ -2,10 +2,13 @@
 import '../../commonStyles.css'
 import './style.css'
 
-
-function Button(props: any) {
+interface Props {
+    text: string;
+    onPress: () => void
+}
+function Button({ text, onPress }: Props) {
     return (
-        <button onClick={() => { props.onPress() }} className='p-8 bold-font clickable medium-font'>{props.text}</button>
+        <button onClick={() => { onPress() }} className='p-8 bold-font clickable medium-font'>{text}</button>
     );
 }
 
